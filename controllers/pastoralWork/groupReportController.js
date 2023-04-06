@@ -1,7 +1,6 @@
 const groupReportModel = require('../../models/pastoralWork/groupReportModel');
 
 const listReport = async (req, res, next) => {
-  console.log("Vao day");
   let listReport = await groupReportModel.list();
   if (!listReport) res.status(401).json({status: 'warning', msg: "Error with list data"});
   else res.json({status: 'success', data: listReport});

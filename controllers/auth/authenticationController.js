@@ -10,7 +10,7 @@ const register = async (req, res, next) => {
   // Check user Existed in DB
   let user = await userModel.getUserByUserName(userName);
   if (user)
-    res.status(409).json({ msg: "Your UserName have Existed Before!!!!" });
+    res.status(409).json({ status: "warning", msg: "Your UserName have Existed Before!!!!" });
   else {
     const hashPassword = bcrypt.hashSync(
       req.body.passWord,
@@ -18,9 +18,11 @@ const register = async (req, res, next) => {
     );
     let user = { ...req.body, passWord: hashPassword };
     let createUser = await userModel.createNewUser(user);
+    console.log(createUser);
     if (!createUser) res.status(400).json({ msg: "Register Fail!!!" });
     else {
       res.json({
+        status: "success",
         msg: `Register Successfully with username: ${user.userName}`,
       });
     }

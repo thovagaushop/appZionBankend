@@ -26,7 +26,7 @@ const insert = (groupReport) => {
         return reject(err);
       }
       let sql =
-        `INSERT INTO "GroupReport" (userId, date, dt, hh, bt, 1L, 4L, menChi) Values (?, ?, ?, ?, ?, ?, ?, ?)`;
+        `INSERT INTO "GroupReport" ("userId", "date", "dt", "hh", "bt", "1L", "4L", "menChi") Values ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"`;
         client.query(
         sql,
         Object.values(groupReport),
@@ -36,7 +36,7 @@ const insert = (groupReport) => {
             console.log(err);
             return resolve(null);
           }
-          return resolve(results);
+          return resolve(results.rows);
         }
       );
     });
