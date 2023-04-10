@@ -6,6 +6,7 @@ dotenv.config();
 //Router
 const groupReportRouter = require('./routes/pastoralWork/groupReportRouter');
 const autheticationRouter = require('./routes/auth/authenticationRouter');
+const userRouter = require('./routes/users/userRouter');
 // Port
 const PORT = process.env.PORT || 8000;
 // App
@@ -19,6 +20,7 @@ app.use(cors());
 
 app.use('/api/auth', autheticationRouter);
 app.use('/api/pastoralWork', groupReportRouter);
+app.use('/api/user', userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running in PORT : ${PORT}`);

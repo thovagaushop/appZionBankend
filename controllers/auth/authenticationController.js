@@ -44,8 +44,8 @@ const login = async (req, res, next) => {
       res.json({
         status: "success",
         msg: "Login success",
-        accessToken: jwt.generateAccessToken({ userName: user.userName }),
-        user: { userName: user.userName, role: user.role },
+        accessToken: jwt.generateAccessToken({ userId: user.id, userName: user.userName, role: user.role }),
+        user: { userId: user.id, userName: user.userName, role: user.role },
       });
     }
   }
