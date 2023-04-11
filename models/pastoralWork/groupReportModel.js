@@ -43,6 +43,7 @@ const insert = (groupReport) => {
   });
 };
 
+
 module.exports = {
   listByUserId,
   insert
