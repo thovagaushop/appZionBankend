@@ -15,7 +15,7 @@ const authenWithJwt = (req, res, next) => {
 
     jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
         if (err) {
-            console.log(err.TokenExpiredError);
+            console.log(err);
             return res.status(403).json({status: 'warning', msg: "You dont have permission"});
         }
 

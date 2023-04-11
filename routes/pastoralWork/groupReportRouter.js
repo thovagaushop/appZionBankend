@@ -6,7 +6,7 @@ const router = express.Router();
 // router.get('/groupReport', jwt.authenWithJwt, groupReportController.listReport);
 // router.post('/groupReport', jwt.authenWithJwt, groupReportController.insertReport);
 
-router.get('/groupReport', jwt.authenWithJwt, groupReportController.listReport);
+router.get('/groupReport/:userId', jwt.authenWithJwt, groupReportController.listReportByUserId);
 router.post('/groupReport', jwt.authenWithJwt, groupReportController.insertReport);
 
 module.exports = router;

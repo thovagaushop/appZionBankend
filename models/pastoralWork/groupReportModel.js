@@ -1,13 +1,13 @@
 const pool = require("../../database/db");
 
-const list = () => {
+const listByUserId = (userId) => {
   return new Promise((resolve, reject) => {
     pool.connect(function (err, client, release) {
       if (err) {
         return reject(err);
       }
-      let sql = `SELECT * FROM "GroupReport"`;
-      client.query(sql, [], function (err, results) {
+      let sql = `SELECT * FROM "GroupReport" WHERE "userId" = $1`;
+      client.query(sql, [userId], function (err, results) {
         release(); // always put connection back in pool after last query
         if (err) {
           console.log(err);
@@ -44,6 +44,6 @@ const insert = (groupReport) => {
 };
 
 module.exports = {
-    list,
-    insert
+  listByUserId,
+  insert
 }
